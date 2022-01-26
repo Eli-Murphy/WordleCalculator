@@ -11,6 +11,9 @@ def main():
     knownlet = input("Known letters (ABC): ")
     letlist = list(knownlet)
 
+    nolist = input("What letters are not in the word?: ")
+    nolist = list(nolist)
+
     for line in fivedir:
         line = line.strip()
         line = line.lower()
@@ -28,13 +31,15 @@ def main():
     output = []
     if len(letoutput) > len(locoutput): 
         l1 = letoutput
+        l2 = locoutput
     else:
         l1 = locoutput
+        l2 = letoutput
 
     for i in range(len(l1)):
         l1item = l1[i]
-        for i in range(len(l2)):
-            l2item = l2[i]
+        for k in range(len(l2)):
+            l2item = l2[k]
             if l1item == l2item:
                 output.append(l1item)
     #SECTION DOSNT WORK^^^
@@ -46,6 +51,8 @@ def main():
     #     for i in range(len(locoutput) - len(letoutput)):
     #         letoutput.append("")
     #output = [i for i, j in zip(locoutput, letoutput) if i == j]
+
+    output = nolap(output, nolist)
 
     print("\n\nPOSSIBLE OUTCOMES: ", output)
 
@@ -109,7 +116,16 @@ def letfind(dirlist, letlist):
             hold.append(i)
     return hold
 
-
+def nolap(output, nolist):
+    for i in range(len(output)):
+        outputword = list(output[i])
+        for j in range(len(nolist)):
+            nolistletter = nolist[j]
+            for k in range(len(outputword)):
+                outputletter = outputword[k]
+                if nolistletter == outputletter:
+                    output.remove(output[i])
+    return output
 
 
 
