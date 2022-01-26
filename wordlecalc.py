@@ -1,3 +1,5 @@
+from cmath import log10
+import re
 
 def main():
     fivedir = open(r"C:\Users\emurphy24\Documents\GitHub\WoordleCalculator\fiveletterdir.txt", "r", encoding="utf-8")
@@ -16,18 +18,34 @@ def main():
         linll = len(letlist)
 
     locoutput = locfind(dirlist, loclist)
-    letoutput = letfind(dirlist, letlist, linll)
+    letoutput = letfind(dirlist, letlist)
         
     print(locoutput)
     print(letoutput)
 
-    if len(letoutput) > len(locoutput):
-        for i in range(len(letoutput) - len(locoutput)):
-            locoutput.append("")
-    if len(locoutput) > len(letoutput):
-        for i in range(len(locoutput) - len(letoutput)):
-            letoutput.append("")
-    output = [i for i, j in zip(locoutput, letoutput) if i == j]
+    l1 = []
+    l2 = []
+    output = []
+    if len(letoutput) > len(locoutput): 
+        l1 = letoutput
+    else:
+        l1 = locoutput
+
+    for i in range(len(l1)):
+        l1item = l1[i]
+        for i in range(len(l2)):
+            l2item = l2[i]
+            if l1item == l2item:
+                output.append(l1item)
+    #SECTION DOSNT WORK^^^
+
+    # if len(letoutput) > len(locoutput):
+    #     for i in range(len(letoutput) - len(locoutput)):
+    #         locoutput.append("")
+    # if len(locoutput) > len(letoutput):
+    #     for i in range(len(locoutput) - len(letoutput)):
+    #         letoutput.append("")
+    #output = [i for i, j in zip(locoutput, letoutput) if i == j]
 
     print("\n\nPOSSIBLE OUTCOMES: ", output)
 
@@ -48,7 +66,7 @@ def locfind(dirlist, loclist):
 
 
 
-def letfind(dirlist, letlist, linll):
+def letfind2(dirlist, letlist, linll):
     hold = []
     for i in dirlist:
         wordlist = list(i)
@@ -67,6 +85,33 @@ def letfind(dirlist, letlist, linll):
                 if matchcount == linll:
                     hold.append(i)
     return hold
+
+def letfind(dirlist, letlist):
+    hold = []
+    
+        
+    if len(letlist) == 1:
+        regexcode = (r"^(?=.*" + str(letlist[0]) + ").*$")
+    elif len(letlist) == 2:
+        regexcode = (r"^(?=.*" + str(letlist[0]) + ")(?=.*" + str(letlist[1]) + ").*$")
+    elif len(letlist) == 3:
+        regexcode = (r"^(?=.*" + str(letlist[0]) + ")(?=.*" + str(letlist[1]) + ")(?=.*" + str(letlist[2]) + ").*$")
+    elif len(letlist) == 4:
+        regexcode = (r"^(?=.*" + str(letlist[0]) + ")(?=.*" + str(letlist[1]) + ")(?=.*" + str(letlist[2]) + ")(?=.*" + str(letlist[3]) + ").*$")
+    elif len(letlist) == 5:
+        regexcode = (r"^(?=.*" + str(letlist[0]) + ")(?=.*" + str(letlist[1]) + ")(?=.*" + str(letlist[2]) + ")(?=.*" + str(letlist[3]) + ")(?=.*" + str(letlist[3]) + ").*$")
+    
+    
+    for i in dirlist:
+        #wordlist = list(i)
+
+        if re.findall(regexcode, i):
+            hold.append(i)
+    return hold
+
+
+
+
 
 if __name__ == '__main__':
     main()
