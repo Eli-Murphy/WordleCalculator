@@ -39,12 +39,12 @@ I am relativly new to coding, so there are some bugs I am currently working on. 
 Bug 27 January 2022: If there are letters that are in the unknown location section, it will still give it the possibility of being in the known incorrect spot.  
 
 * Example Scenario:
- * Wordle Word: Chase
- * Known position letters: -ha-- <br />
- * Known letters unknown position: c (Yellow in first position, meaning cant start with C)  <br />
- * Return possibilities: ['chace', 'chafe', 'chaff', 'chain', 'chair', 'chalk', 'champ', 'chant', 'chaos', 'chaps', 'chard', 'charm', 'chars', 'chart', 'chary', 'chase',    'chasm', 'chats', 'shack', 'whack']<br />
- * It is returning wirds that begin with C when the user knows it cannot.<br />
- * Status: Work In Progress
+    1. Wordle Word: Chase
+    2. Known position letters: -ha-- <br />
+    3. Known letters unknown position: c (Yellow in first position, meaning cant start with C)  <br />
+    4. Return possibilities: ['chace', 'chafe', 'chaff', 'chain', 'chair', 'chalk', 'champ', 'chant', 'chaos', 'chaps', 'chard', 'charm', 'chars', 'chart', 'chary', 'chase',    'chasm', 'chats', 'shack', 'whack']<br />
+    5. It is returning wirds that begin with C when the user knows it cannot.<br />
+    6. Status: Work In Progress
 
 ## To-Be-Added Features
 * Try/Except on user inputs
