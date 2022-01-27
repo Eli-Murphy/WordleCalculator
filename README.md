@@ -41,10 +41,8 @@ Bug 27 January 2022: If there are letters that are in the unknown location secti
     Wordle Word: Chase
     Known position letters: -ha--
     Known letters unknown position: c (Yellow in first position, meaning cant start with C)
-    Return possibilities: 'chace', 'chafe', 'chaff', 'chain', 'chair', 'chalk', 'champ', 'chant', 'chaos', 'chaps', 'chard', 'charm', 'chars', 'chart', 'chary', 'chase',    'chasm', 'chats', 'shack', 'whack'
-    
+    Return possibilities: ['chace', 'chafe', 'chaff', 'chain', 'chair', 'chalk', 'champ', 'chant', 'chaos', 'chaps', 'chard', 'charm', 'chars', 'chart', 'chary', 'chase',    'chasm', 'chats', 'shack', 'whack']
     It is returning wirds that begin with C when the user knows it cannot.
-    
     Status: Work In Progress
     
 ## To-Be-Added Features
