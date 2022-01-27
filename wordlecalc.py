@@ -23,8 +23,6 @@ def main():
     locoutput = locfind(dirlist, loclist)
     letoutput = letfind(dirlist, letlist)
         
-    print(locoutput)
-    print(letoutput)
 
     l1 = []
     l2 = []
@@ -42,15 +40,6 @@ def main():
             l2item = l2[k]
             if l1item == l2item:
                 output.append(l1item)
-    #SECTION DOSNT WORK^^^
-
-    # if len(letoutput) > len(locoutput):
-    #     for i in range(len(letoutput) - len(locoutput)):
-    #         locoutput.append("")
-    # if len(locoutput) > len(letoutput):
-    #     for i in range(len(locoutput) - len(letoutput)):
-    #         letoutput.append("")
-    #output = [i for i, j in zip(locoutput, letoutput) if i == j]
 
     output = nolap(output, nolist)
 
