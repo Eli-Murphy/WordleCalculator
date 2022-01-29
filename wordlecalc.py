@@ -2,7 +2,7 @@ from cmath import log10
 import re
 
 def main():
-    fivedir = open(r"C:\Users\emurphy24\Documents\GitHub\WoordleCalculator\fiveletterdir.txt", "r", encoding="utf-8")
+    fivedir = open(r"C:\Users\elija\Documents\GitHub\WordleCalculator\fiveletterdir.txt", "r", encoding="utf-8")
     dirlist = []
 
     knownloc = input("Known letter position (X-YZ-):")
@@ -107,7 +107,7 @@ def letfind(dirlist, letlist):
 
 def nolap(output, nolist):
     for i in range(len(output)):
-        outputword = list(output[i])
+        outputword = list(output[10])
         for j in range(len(nolist)):
             nolistletter = nolist[j]
             for k in range(len(outputword)):
