@@ -1,7 +1,9 @@
-from cmath import log10
 import re
+import os
 
 def main():
+    fileloc = fileLoc = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__)))
     fivedir = open(r"C:\Users\emurphy24\Documents\GitHub\WoordleCalculator\fiveletterdir.txt", "r", encoding="utf-8")
     dirlist = []
 
@@ -106,14 +108,26 @@ def letfind(dirlist, letlist):
     return hold
 
 def nolap(output, nolist):
-    for i in range(len(output)):
+    print("output: ", type(output))
+    print("nolist: ", type(nolist))
+    if len(output) > len(nolist):
+        for i in range(len(output)-len(nolist)):
+            nolist.append(" ")
+    if len(output) < len(nolist):
+        for i in range(len(nolist)-len(output)):
+            output.append(" ")
+        
+    for i in range(len(nolist)):
         outputword = list(output[i])
         for j in range(len(nolist)):
             nolistletter = nolist[j]
             for k in range(len(outputword)):
                 outputletter = outputword[k]
                 if nolistletter == outputletter:
-                    output.remove(output[i])
+                    try:
+                        output.remove(output[i])
+                    except:
+                        pass
     return output
 
 
