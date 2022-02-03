@@ -4,6 +4,7 @@
 * [General Info](#general-info)
 * [Technologies](#technologies)
 * [How To Use](#how-to-use)
+* [Copyright](#copyright)
 
 ## General Info
 
@@ -53,3 +54,10 @@ Bug 27 January 2022: If there are letters that are in the unknown location secti
 ## Contact
 
 Any questions please DM me on github or discord ILikeBrunch#0826
+
+## Copyright
+
+Copyright (c) 2022 Elijah A. Murphy  
+Distributed under the terms of the MIT License.  
+SPDX-License-Identifier: MIT  
+This code is part of the Battleship project (https://github.com/Eli-Murphy/Battleship)  
