@@ -1,5 +1,3 @@
-
-
 import re
 import os
 
@@ -57,7 +55,6 @@ def locfind(dirlist, loclist):
         wordlist = list(i)
         matchcount = 0
         for j in range(len(wordlist)):
-            #print(i)
             if wordlist[j] == loclist[j] or loclist[j] == "-":
                 matchcount += 1
                 if matchcount == 5:
