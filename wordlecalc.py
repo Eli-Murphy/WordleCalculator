@@ -13,8 +13,8 @@ def main():
     knownlet = input("Known letters (ABC): ")
     letlist = list(knownlet)
 
-    nolist = input("What letters are not in the word?: ")
-    nolist = list(nolist)
+    #nolist = input("What letters are not in the word?: ")
+    #nolist = list(nolist)
 
     for line in fivedir:
         line = line.strip()
@@ -43,7 +43,7 @@ def main():
             if l1item == l2item:
                 output.append(l1item)
 
-    output = nolap(output, nolist)
+   #output = nolap(output, nolist)
 
     print("\n\nPOSSIBLE OUTCOMES: ", output)
 
