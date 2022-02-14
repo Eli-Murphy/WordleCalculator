@@ -47,7 +47,7 @@ Bug 27 January 2022: If there are letters that are in the unknown location secti
     5. It is returning wirds that begin with C when the user knows it cannot.<br />
     6. Status: Work In Progress
 
-Bug 14 January 2022: If an item is compared in the nolap() function and a letter is found to be in a item in the list, it will skip over the next item due to iteration not acocunting for the new amout of items in the list. **!!!RESOLVED!!!**<br />
+**[RESOLVED]: **Bug 14 January 2022: If an item is compared in the nolap() function and a letter is found to be in a item in the list, it will skip over the next item due to iteration not acocunting for the new amout of items in the list.<br />
 * Example Scenario:<br />
     1.Wordlist = [apple, pear, rock, fruit]<br />
     2.nolist = [a, x, z]<br />
