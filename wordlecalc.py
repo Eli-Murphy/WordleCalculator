@@ -107,7 +107,7 @@ def letfind(dirlist, letlist):
 
 def nolap(output, nolist):
     for i in range(len(output)):
-        outputword = list(output[10])
+        outputword = list(output[i])
         for j in range(len(nolist)):
             nolistletter = nolist[j]
             for k in range(len(outputword)):
