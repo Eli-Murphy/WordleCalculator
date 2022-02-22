@@ -4,6 +4,7 @@
 * [General Info](#general-info)
 * [Technologies](#technologies)
 * [How To Use](#how-to-use)
+* [Copyright](#copyright)
 
 ## General Info
 
@@ -46,6 +47,13 @@ Bug 27 January 2022: If there are letters that are in the unknown location secti
     5. It is returning wirds that begin with C when the user knows it cannot.<br />
     6. Status: Work In Progress
 
+**[RESOLVED]:** Bug 14 January 2022: If an item is compared in the nolap() function and a letter is found to be in a item in the list, it will skip over the next item due to iteration not acocunting for the new amout of items in the list.<br />
+* Example Scenario:<br />
+    1.Wordlist = [apple, pear, rock, fruit]<br />
+    2.nolist = [a, x, z]<br />
+    3.i is 0, wordlist[i] is removed, length of list is changed<br />
+    4.i is 1, wordlist[i] is not removed because i is "rock"<br />
+
 ## To-Be-Added Features
 * Try/Except on user inputs
 * More appealing UI
@@ -53,3 +61,10 @@ Bug 27 January 2022: If there are letters that are in the unknown location secti
 ## Contact
 
 Any questions please DM me on github or discord ILikeBrunch#0826
+
+## Copyright
+
+Copyright (c) 2022 Elijah A. Murphy  
+Distributed under the terms of the MIT License.  
+SPDX-License-Identifier: MIT  
+This code is part of the Battleship project (https://github.com/Eli-Murphy/WordleCalculator)  
