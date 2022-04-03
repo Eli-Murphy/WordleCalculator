@@ -1,7 +1,9 @@
-
-
 import re
 import os
+from unittest import skip
+from art import *
+
+outputLim = 100
 
 def main():
     fileloc = fileLoc = os.path.realpath(
@@ -9,14 +11,25 @@ def main():
     fivedir = open(r"C:\Users\elija\Documents\GitHub\WordleCalculator\fiveletterdir.txt", "r", encoding="utf-8")
     dirlist = []
 
-    knownloc = input("Known letter position (X-YZ-):")
-    loclist = list(knownloc)
+    knownloc = input("Please input the known letter positions in this format:(-x-y-):")
+    if len(knownloc) == 5:
+        loclist = list(knownloc)
+    else:
+        print("Please input something, or if there isnt any known letters, input (-----)")
+        main()
+    knownlet = input("Please input the unknown position letters in this format or leave blank:(xyz):")
 
-    knownlet = input("Known letters (ABC): ")
     letlist = list(knownlet)
+    skipLetCheck = False
+    if len(letlist) == 0:
+        skipLetCheck = True
 
-    nolist = input("What letters are not in the word?: ")
+    nolist = input("What letters are not in the word? (leave blank if unknown): ")
     nolist = list(nolist)
+    skipNolist = False
+
+    if len(nolist) == 0:
+        skipNolist = True
 
     for line in fivedir:
         line = line.strip()
@@ -25,27 +38,36 @@ def main():
         linll = len(letlist)
 
     locoutput = locfind(dirlist, loclist)
-    letoutput = letfind(dirlist, letlist)
+    if not skipLetCheck:
+        letoutput = letfind(dirlist, letlist)
         
 
-    l1 = []
-    l2 = []
-    output = []
-    if len(letoutput) > len(locoutput): 
-        l1 = letoutput
-        l2 = locoutput
+        l1 = []
+        l2 = []
+        output = []
+        if len(letoutput) > len(locoutput): 
+            l1 = letoutput
+            l2 = locoutput
+        else:
+            l1 = locoutput
+            l2 = letoutput
+
+        for i in range(len(l1)):
+            l1item = l1[i]
+            for k in range(len(l2)):
+                l2item = l2[k]
+                if l1item == l2item:
+                    output.append(l1item)
+    if skipNolist and skipLetCheck:
+        output = locfind(dirlist, loclist)
     else:
-        l1 = locoutput
-        l2 = letoutput
+        locoutput = output
+    if not skipNolist:
+        output = nolap(output, nolist)
 
-    for i in range(len(l1)):
-        l1item = l1[i]
-        for k in range(len(l2)):
-            l2item = l2[k]
-            if l1item == l2item:
-                output.append(l1item)
-
-    #output = nolap(output, nolist)
+    if len(output) > outputLim:
+        print("Sorry, there were over", str(outputLim), "possible words! Try narrowing it down.")
+        main()
 
     print("\n\nPOSSIBLE OUTCOMES: ", output)
 
@@ -57,38 +79,14 @@ def locfind(dirlist, loclist):
         wordlist = list(i)
         matchcount = 0
         for j in range(len(wordlist)):
-            #print(i)
             if wordlist[j] == loclist[j] or loclist[j] == "-":
                 matchcount += 1
                 if matchcount == 5:
                     hold.append(i)
     return hold
 
-
-
-def letfind2(dirlist, letlist, linll):
-    hold = []
-    for i in dirlist:
-        wordlist = list(i)
-        matchcount = 0
-        for j in range(len(wordlist)):
-            if wordlist[j] in letlist: 
-
-                #BUG: If given data like "[i,c,a]", words such as "ababa" 
-                # will pass due to the "a" being counted three times. Ideally,
-                # all the letters would need to be in the string to pass, however
-                # I am unaware of how to code a feature that would know which letter
-                # was used, and remove it from [letlist]. However due to it not being
-                # iterated, I cannot remove that specific letter using variable j.
-
-                matchcount += 1
-                if matchcount == linll:
-                    hold.append(i)
-    return hold
-
 def letfind(dirlist, letlist):
     hold = []
-    
         
     if len(letlist) == 1:
         regexcode = (r"^(?=.*" + str(letlist[0]) + ").*$")
@@ -103,38 +101,28 @@ def letfind(dirlist, letlist):
     
     
     for i in dirlist:
-        #wordlist = list(i)
-
         if re.findall(regexcode, i):
             hold.append(i)
     return hold
 
-def nolap(output, nolist):
-    print("output: ", type(output))
-    print("nolist: ", type(nolist))
-    if len(output) > len(nolist):
-        for i in range(len(output)-len(nolist)):
-            nolist.append(" ")
-    if len(output) < len(nolist):
-        for i in range(len(nolist)-len(output)):
-            output.append(" ")
-        
-    for i in range(len(nolist)):
-        outputword = list(output[i])
-        for j in range(len(nolist)):
-            nolistletter = nolist[j]
-            for k in range(len(outputword)):
-                outputletter = outputword[k]
-                if nolistletter == outputletter:
-                    try:
-                        output.remove(output[i])
-                    except:
-                        pass
+def nolap(wordlists, nolist):
+    i = 0
+    output = wordlists
+    for w in range(len(wordlists)):
+        wordRemoved = False
+        for l in nolist:
+            if not wordRemoved:
+                if l in output[i]:
+                    output.remove(output[i])
+                    wordRemoved = True
+        if not wordRemoved:
+            i += 1
+                    
     return output
 
-
-
 if __name__ == '__main__':
+    tprint("     WORDLE    ENGINE\n\n")
+    print("This code is part of the Battleship project (https://github.com/Eli-Murphy/WordleCalculator)\n\n")
     main()
 
 
