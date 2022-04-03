@@ -6,7 +6,7 @@ import os
 def main():
     fileloc = fileLoc = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
-    fivedir = open(r"C:\Users\emurphy24\Documents\GitHub\WoordleCalculator\fiveletterdir.txt", "r", encoding="utf-8")
+    fivedir = open(r"C:\Users\elija\Documents\GitHub\WordleCalculator\fiveletterdir.txt", "r", encoding="utf-8")
     dirlist = []
 
     knownloc = input("Known letter position (X-YZ-):")
@@ -45,7 +45,7 @@ def main():
             if l1item == l2item:
                 output.append(l1item)
 
-    output = nolap(output, nolist)
+    #output = nolap(output, nolist)
 
     print("\n\nPOSSIBLE OUTCOMES: ", output)
 
