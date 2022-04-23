@@ -105,16 +105,6 @@ def letfind(dirlist, letlist):
             hold.append(i)
     return hold
 
-<<<<<<< HEAD
-def nolap(output, nolist):
-    for i in range(len(output)):
-        outputword = list(output[i])
-        for j in range(len(nolist)):
-            nolistletter = nolist[j]
-            for k in range(len(outputword)):
-                outputletter = outputword[k]
-                if nolistletter == outputletter:
-=======
 def nolap(wordlists, nolist):
     i = 0
     output = wordlists
@@ -123,7 +113,6 @@ def nolap(wordlists, nolist):
         for l in nolist:
             if not wordRemoved:
                 if l in output[i]:
->>>>>>> 52950b549eb60e6a428164253d34f3915efa7551
                     output.remove(output[i])
                     wordRemoved = True
         if not wordRemoved:
