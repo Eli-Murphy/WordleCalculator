@@ -8,7 +8,7 @@ outputLim = 100
 def main():
     fileloc = fileLoc = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
-    fivedir = open(r"C:\Users\emurphy24\Documents\GitHub\WoordleCalculator\fiveletterdir.txt", "r", encoding="utf-8")
+    fivedir = open(r"C:\Users\elija\Documents\GitHub\WordleCalculator\fiveletterdir.txt", "r", encoding="utf-8")
     dirlist = []
 
     knownloc = input("Please input the known letter positions in this format:(-x-y-):")
